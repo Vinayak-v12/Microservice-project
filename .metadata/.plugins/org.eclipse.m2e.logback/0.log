@@ -134,3 +134,6 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact io.github.cdi
 2025-10-10 15:27:45,458 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-10-10 15:27:45,463 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-10-10 15:27:45,464 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vinayak\Microservice-project\TaskService (1)\TaskService\src\test\resources
+2025-10-10 15:35:55,656 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-10-10 15:35:55,662 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-10-10 15:35:55,664 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\vinayak\Microservice-project\TaskService (1)\TaskService\src\test\resources
