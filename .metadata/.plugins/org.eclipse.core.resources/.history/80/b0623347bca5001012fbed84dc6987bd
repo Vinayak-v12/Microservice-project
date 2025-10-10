@@ -1,0 +1,32 @@
+spring.application.name=Notification-Service
+server.port=8010
+eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/
+
+
+
+
+
+# Redis Cloud port 11140 uses SSL
+
+#spring.redis.password=********
+
+# 2. Email (SMTP) Configuration
+# -----------------------------
+# Example: use your actual mail host
+spring.mail.host=smtp.gmail.com
+# Example: use your actual mail port
+spring.mail.port=587
+spring.mail.username=vinayakspringproject375@gmail.com
+spring.mail.password=rllf jpqo hnhx awzp
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+# Force registration with localhost IP
+eureka.instance.hostname=127.0.0.1
+eureka.instance.prefer-ip-address=true
+
+# Lettuce pool & timeout
+spring.redis.timeout=60000
+spring.redis.lettuce.pool.max-active=8
+spring.redis.lettuce.pool.max-wait=1000

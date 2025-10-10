@@ -1,0 +1,42 @@
+spring.application.name=Notification-Service
+server.port=8010
+eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/
+
+#kafka config
+#spring.kafka.bootstrap-servers=localhost:9092
+
+# Consumer Group ID (Must be unique for your consumer group)
+#spring.kafka.consumer.group-id=mygroup
+
+# Deserializer for the message value (JSON)
+#spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
+
+# CRITICAL: Tells the deserializer the fully qualified class name to reconstruct the object
+#spring.kafka.consumer.properties.spring.json.value.default.type=com.Task.TaskService.DTO.EmailDto
+# In Notification-Service/src/main/resources/application.properties
+#spring.kafka.consumer.properties.spring.json.trusted.packages=com.Task.TaskService.DTO,com.notification.Notification_Service.dto,java.util,java.lang,*
+
+spring.redis.host=redis-11140.crce214.us-east-1-3.ec2.redns.redis-cloud.com
+spring.redis.port=11140
+spring.redis.username=default
+spring.redis.password=vQhtUsSw9ZQ9TsEb8BO2SvOVXBiJeK1H
+spring.redis.ssl=true   
+# Redis Cloud port 11140 uses SSL
+
+#spring.redis.password=********
+
+# 2. Email (SMTP) Configuration
+# -----------------------------
+# Example: use your actual mail host
+spring.mail.host=smtp.gmail.com
+# Example: use your actual mail port
+spring.mail.port=587
+spring.mail.username=vinayakspringproject375@gmail.com
+spring.mail.password=rllf jpqo hnhx awzp
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+# Force registration with localhost IP
+eureka.instance.hostname=127.0.0.1
+eureka.instance.prefer-ip-address=true

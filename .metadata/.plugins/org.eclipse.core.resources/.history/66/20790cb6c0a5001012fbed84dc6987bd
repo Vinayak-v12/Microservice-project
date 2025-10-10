@@ -1,0 +1,29 @@
+spring.application.name=TaskService
+spring.datasource.url=jdbc:postgresql://localhost:5432/taskdb
+spring.datasource.username=postgres
+spring.datasource.password=root
+server.port=8004
+eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+
+# Force registration with localhost IP
+eureka.instance.hostname=127.0.0.1
+eureka.instance.prefer-ip-address=true
+#spring.kafka.bootstrap-servers=localhost:9092
+
+# Serializer for the message value (Your EmailDto/DeadlineEvent object)
+#spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+# 3. Enable Scheduling 
+#spring.task.scheduling.enabled=true
+
+
+spring.redis.host=redis-11140.crce214.us-east-1-3.ec2.redns.redis-cloud.com
+spring.redis.port=11140
+spring.redis.username=default
+spring.redis.password=vQhtUsSw9ZQ9TsEb8BO2SvOVXBiJeK1H
+spring.redis.ssl=true
+#spring.redis.password=********
