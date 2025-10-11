@@ -18,5 +18,4 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.notification.Notification_Service.NotificationServiceApplication"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="Notification-Service"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Notification-Service"/>
-    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 </launchConfiguration>
