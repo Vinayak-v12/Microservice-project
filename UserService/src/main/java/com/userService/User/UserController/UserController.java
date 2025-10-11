@@ -28,7 +28,14 @@ public class UserController {
 	}
 	@PostMapping("/register")
 	public void register(@RequestBody Users user) {
-		userservice.register(user);
+		 try {
+		        userservice.register(user);
+		        System.out.println("user registarintion 200");
+		    } catch (Exception e) {
+		        e.printStackTrace(); // log the real error
+		        
+		    }
+		
 	}
 	@GetMapping("/userEmail")
 	public String getMail(@RequestParam String uuid) {
