@@ -16,7 +16,7 @@ public class RedisConfig {
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName("redis-11140.crce214.us-east-1-3.ec2.redns.redis-cloud.com");
         config.setPort(11140);
-        config.setPassword(System.getenv("REDIS_CLOUD_PASS"));
+        config.setPassword("vQhtUsSw9ZQ9TsEb8BO2SvOVXBiJeK1H");
         return new LettuceConnectionFactory(config);
 
     }
