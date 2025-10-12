@@ -33,53 +33,46 @@ public class NotifiactionConsumer {
         this.emailService = emailService;
         this.redisTemplate = redisTemplate;
     }
-
+    
     @PostConstruct
-    public void start() {
-        // 1️ Create consumer group if not exists
+    public void createGroup() {
         try {
             redisTemplate.opsForStream().createGroup(STREAM_KEY, CONSUMER_GROUP);
             System.out.println("✅ Consumer group created: " + CONSUMER_GROUP);
         } catch (Exception e) {
             System.out.println("ℹ️ Group might already exist: " + e.getMessage());
         }
+    }
 
-        // 2️Start listening to the stream
-        Executors.newSingleThreadExecutor().submit(() -> {
-            while (true) {
-                try {
-                    List<MapRecord<String, Object, Object>> messages =
-                        redisTemplate.opsForStream().read(
-                            Consumer.from(CONSUMER_GROUP, CONSUMER_NAME),
-                            StreamReadOptions.empty().count(10).block(Duration.ofSeconds(5)),
-                            StreamOffset.create(STREAM_KEY, ReadOffset.lastConsumed())
-                        );
+    @org.springframework.scheduling.annotation.Scheduled(fixedDelay = 5000)
+    public void pollStream() {
+        try {
+            List<MapRecord<String, Object, Object>> messages =
+                redisTemplate.opsForStream().read(
+                    Consumer.from(CONSUMER_GROUP, CONSUMER_NAME),
+                    StreamReadOptions.empty().count(10),
+                    StreamOffset.create(STREAM_KEY, ReadOffset.lastConsumed())
+                );
 
-                    if (messages != null && !messages.isEmpty()) {
-                        for (MapRecord<String, Object, Object> msg : messages) {
-                            EmailDto email = new EmailDto();
-                            email.setUserEmail((String) msg.getValue().get("userEmail"));
-                            email.setMessage((String) msg.getValue().get("message"));
-                            email.setDeadline(LocalDateTime.parse((String) msg.getValue().get("deadline")));
+            if (messages != null) {
+                for (MapRecord<String, Object, Object> msg : messages) {
+                    EmailDto email = new EmailDto();
+                    email.setUserEmail((String) msg.getValue().get("userEmail"));
+                    email.setMessage((String) msg.getValue().get("message"));
+                    email.setDeadline(LocalDateTime.parse((String) msg.getValue().get("deadline")));
 
-                            emailService.send(email);
-                            System.out.println("📧 Email sent to: " + email.getUserEmail());
+                    emailService.send(email);
+                    System.out.println("📧 Email sent to: " + email.getUserEmail());
 
-                            //  Acknowledge processed message
-                            redisTemplate.opsForStream().acknowledge(CONSUMER_GROUP, msg);
-                            
-
-
-                            //  Trim stream to MAX_STREAM_LENGTH
-                            redisTemplate.opsForStream().trim(STREAM_KEY, MAX_STREAM_LENGTH);
-                        }
-                    }
-
-                    Thread.sleep(2000); // small pause
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    redisTemplate.opsForStream().acknowledge(CONSUMER_GROUP, msg);
+                    redisTemplate.opsForStream().trim(STREAM_KEY, MAX_STREAM_LENGTH);
                 }
             }
-        });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+   
+    
 }
