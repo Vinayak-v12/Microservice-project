@@ -6,6 +6,7 @@ import java.util.Base64;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -21,9 +22,12 @@ public class JwtGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String path = exchange.getRequest().getURI().getPath();
+        
+        HttpMethod method = exchange.getRequest().getMethod();
 
-        // Bypass login/register
-        if (path.contains("/USERSERVICE/login") || path.contains("/USERSERVICE/register")) {
+     // Bypass login/register and OPTIONS preflight
+        if (method==HttpMethod.OPTIONS ||
+            path.contains("/USERSERVICE/login") || path.contains("/USERSERVICE/register")) {
             return chain.filter(exchange);
         }
 
