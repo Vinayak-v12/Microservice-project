@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 
 @Configuration
 public class RedisConfig {
@@ -16,8 +17,11 @@ public class RedisConfig {
         config.setPassword("vQhtUsSw9ZQ9TsEb8BO2SvOVXBiJeK1H");
 
        
+        LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
+                .useSsl()           
+                .build();
 
-        return new LettuceConnectionFactory(config);
+        return new LettuceConnectionFactory(config,clientConfig);
        
 
     }
