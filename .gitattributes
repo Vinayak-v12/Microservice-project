@@ -1,0 +1,17 @@
+# --- Ignore non-Java files in language stats ---
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+*.json linguist-vendored
+*.yml linguist-vendored
+*.yaml linguist-vendored
+*.xml linguist-vendored
+
+# --- Mark Java as main language ---
+*.java linguist-language=Java
+
+# --- Optional: ignore IDE metadata (Eclipse, IntelliJ) ---
+.project linguist-vendored
+.classpath linguist-vendored
+.settings/* linguist-vendored
+.idea/* linguist-vendored
