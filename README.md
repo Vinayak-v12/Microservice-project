@@ -1,7 +1,7 @@
 # 🧠 Task Management Microservice Project
 
-A full-stack offline first(Indexed db)**Task Management Application** built using **Spring Boot Microservices** and a custom **HTML + CSS frontend**.  
-It includes user authentication, task management, and email notifications for task reaching deadline via Redis Streams.
+A full-stack offline-first(Indexed DB)**Task Management Application** built using **Spring Boot Microservices** and a custom **HTML + CSS frontend**.  
+It includes user authentication, task management, and email notifications for task reaching deadline via Redis Streams.Both frontend and backend deployed on render cloud
 
 ---
 
@@ -34,6 +34,10 @@ It includes user authentication, task management, and email notifications for ta
 - Fully deployed using Render  
 
 ---
+> ⚠️ **Important:** Backend services are deployed on Render Free Tier and may be asleep. 
+> Open all backend service URLs once to wake them up so that they gets registerd on eureka server(service registry) before using the frontend.
+> otherwise app wont work properly as expected
+
 
 ## 🧩 Microservices Overview
 
