@@ -34,13 +34,19 @@ public class NotifiactionConsumer {
         this.redisTemplate = redisTemplate;
     }
     
-    @PostConstruct
-    public void createGroup() {
+     @PostConstruct
+    public void verifyRedisConnection() {
+        try {
+            String pong = redisTemplate.getConnectionFactory().getConnection().ping();
+            System.out.println(" Connected to Redis Cloud successfully: " + pong);
+        } catch (Exception e) {
+            System.err.println("Failed to connect to Redis Cloud: " + e.getMessage());
+        }
         try {
             redisTemplate.opsForStream().createGroup(STREAM_KEY, CONSUMER_GROUP);
-            System.out.println("✅ Consumer group created: " + CONSUMER_GROUP);
+            System.out.println("Consumer group created: " + CONSUMER_GROUP);
         } catch (Exception e) {
-            System.out.println("ℹ️ Group might already exist: " + e.getMessage());
+            System.out.println("Group might already exist: " + e.getMessage());
         }
     }
 
