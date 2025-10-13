@@ -12,7 +12,7 @@ It includes user authentication, task management, and email notifications for ta
 | 🧩 API Gateway | https://api-gateway-rgim.onrender.com |
 | 👤 User Service | https://user-service-heey.onrender.com |
 | 📋 Task Service | https://task-service-mkjc.onrender.com |
-| 📬 Notification Service | https://notification-service-yourname.onrender.com |
+| 📬 Notification Service | https://notification-service-dxrn.onrender.com |
 | 💻 Frontend | https://microservice-project-frontend.onrender.com |
 
 ---
