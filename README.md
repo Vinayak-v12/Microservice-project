@@ -9,6 +9,7 @@ It includes user authentication, task management, and email notifications for ta
 
 | Service | URL |
 |----------|-----|
+| 🔍 Service Registry | https://service-registry-bbyi.onrender.com|
 | 🧩 API Gateway | https://api-gateway-rgim.onrender.com |
 | 👤 User Service | https://user-service-heey.onrender.com |
 | 📋 Task Service | https://task-service-mkjc.onrender.com |
